@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:elemental_challenge/components/list_button.dart';
-import 'package:elemental_challenge/pages/Challenge/main.dart';
+import 'package:elemental_challenge/pages/elemental_symbol/main.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -37,27 +37,58 @@ class MobileLayout extends StatelessWidget {
                   const ListButton(
                     title: '원소 기호 챌린지',
                     difficulty: '쉬움',
-                    questionnum: 50,
-                    destinationPage: Challenge(),
+                    questionnum: 20,
+                    destinationPage: ChallengeElementalSymbol(),
                   ),
                   const ListButton(
-                    title: 'Button 2',
-                    difficulty: 'Easy',
-                    questionnum: 50,
-                    destinationPage: Challenge(),
+                    title: '원소명 챌린지',
+                    difficulty: '쉬움',
+                    questionnum: 20,
+                    destinationPage: ChallengeElementalSymbol(),
                   ),
                   const ListButton(
-                    title: 'Button 3',
-                    difficulty: 'Easy',
-                    questionnum: 50,
-                    destinationPage: Challenge(),
+                    title: '원자 번호 챌린지',
+                    difficulty: '보통',
+                    questionnum: 20,
+                    destinationPage: ChallengeElementalSymbol(),
                   ),
                   const ListButton(
-                    title: 'Button 1',
-                    difficulty: 'Easy',
+                    title: '원소 챌린지',
+                    difficulty: '어려움',
                     questionnum: 50,
-                    destinationPage: Challenge(),
+                    destinationPage: ChallengeElementalSymbol(),
                   ),
+                  const ListButton(
+                    title: '음이온식 챌린지',
+                    difficulty: '보통',
+                    questionnum: 50,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '양이온식 챌린지',
+                    difficulty: '보통',
+                    questionnum: 50,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '이온식명 챌린지',
+                    difficulty: '보통',
+                    questionnum: 50,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '이온식 챌린지',
+                    difficulty: '보통',
+                    questionnum: 50,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '분자식 챌린지',
+                    difficulty: '보통',
+                    questionnum: 50,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+
                 ],
               ),
             ),
