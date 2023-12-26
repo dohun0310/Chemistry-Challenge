@@ -11,7 +11,7 @@ class ListButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 4),
+      margin: const EdgeInsets.only(bottom: 12),
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
@@ -26,38 +26,59 @@ class ListButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
         ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 24,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0), // Adjust the padding value as needed
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 24,
+                  ),
                 ),
               ),
-            ),
-            Row(
-              children: [
-                Container(
-                  child: Text(
-                    difficulty,
-                    style: const TextStyle(
-                      fontSize: 16,
-                    ),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      const Text(
+                        "난이도",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        difficulty,
+                        style: const TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(width: 8),
-                Container(
-                  child: Text(
-                    questionnum.toString(),
-                    style: const TextStyle(
-                      fontSize: 16,
-                    ),
+                  const SizedBox(width: 12),
+                  Column(
+                    children: [
+                      const Text(
+                        "문제 수",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        questionnum.toString(),
+                        style: const TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            )
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
