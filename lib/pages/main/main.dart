@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:elemental_challenge/components/list_button.dart';
+import 'package:elemental_challenge/pages/Challenge/main.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -33,7 +34,30 @@ class MobileLayout extends StatelessWidget {
             SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  
+                  const ListButton(
+                    title: '원소 기호 챌린지',
+                    difficulty: '쉬움',
+                    questionnum: 50,
+                    destinationPage: Challenge(),
+                  ),
+                  const ListButton(
+                    title: 'Button 2',
+                    difficulty: 'Easy',
+                    questionnum: 50,
+                    destinationPage: Challenge(),
+                  ),
+                  const ListButton(
+                    title: 'Button 3',
+                    difficulty: 'Easy',
+                    questionnum: 50,
+                    destinationPage: Challenge(),
+                  ),
+                  const ListButton(
+                    title: 'Button 1',
+                    difficulty: 'Easy',
+                    questionnum: 50,
+                    destinationPage: Challenge(),
+                  ),
                 ],
               ),
             ),
@@ -54,7 +78,7 @@ class TabletLayout extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
+            
           ],
         ),
       ),
