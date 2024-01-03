@@ -211,25 +211,26 @@ class ChallengeElementalSymbolState extends State<ChallengeElementalSymbolPage> 
           ),
         ),
         const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: _choices.map((answer) => Expanded(
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: ElevatedButton(
-                onPressed: () => _selectAnswer(answer),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black, backgroundColor: Colors.grey[300],
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+        Expanded(
+          child: ListView.builder(
+            itemCount: _choices.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                height: MediaQuery.of(context).size.height * 0.1,
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: ElevatedButton(
+                  onPressed: () => _selectAnswer(_choices[index]),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black, backgroundColor: Colors.grey[300],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Text(_choices[index]),
                 ),
-                child: Text(answer),
-              ),
-            ),
-          )).toList(),
+              );
+            },
+          ),
         ),
       ],
     );
