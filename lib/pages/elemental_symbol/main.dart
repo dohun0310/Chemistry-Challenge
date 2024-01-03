@@ -33,6 +33,7 @@ class ChallengeElementalSymbolState extends State<ChallengeElementalSymbolPage> 
   late Map<String, dynamic> _currentItem;
   late List<String> _choices;
   late String _correctAnswer;
+  late bool _isChallengeCompleted = false;
   static int resetThreshold = 10;
 
   @override
@@ -80,26 +81,18 @@ class ChallengeElementalSymbolState extends State<ChallengeElementalSymbolPage> 
   }
 
   void _showFinalScore() {
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('챌린지 완료!'),
-        content: Text('정답: $_correctCount개, 오답: $_incorrectCount개'),
-        actions: <Widget>[
-          ElevatedButton(
-            child: const Text('다시 시작'),
-            onPressed: () {
-              Navigator.of(ctx).pop();
-              _resetChallenge();
-            },
-          ),
-        ],
-      ),
-    );
+    setState(() {
+      _isChallengeCompleted = true;
+    });
+  }
+
+  void _mainPage() {
+    Navigator.of(context, rootNavigator: true).pop();
   }
 
   void _resetChallenge() {
     setState(() {
+      _isChallengeCompleted = false;
       _usedItems.clear();
       _correctCount = 0;
       _incorrectCount = 0;
@@ -113,35 +106,132 @@ class ChallengeElementalSymbolState extends State<ChallengeElementalSymbolPage> 
       appBar: AppBar(
         title: const Text('원소 기호 챌린지'),
       ),
-      body: Center(
-        child: ListView(
-          padding: const EdgeInsets.all(20.0),
-          children: [
-            const Text(
-              '이 원소의 이름은 무엇인가요?',
-              style: TextStyle(fontSize: 24),
-              textAlign: TextAlign.center,
+      body: _isChallengeCompleted ? _finalScoreScreen() : _challengeScreen(),
+    );
+  }
+
+  Widget _finalScoreScreen() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8),
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.7,
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(24),
             ),
-            Text(
-              _currentItem['symbol'],
-              style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  '챌린지 완료!',
+                  style: TextStyle(fontSize: 24),
+                ),
+                Text(
+                  '$_correctCount개의 문제를 맞추고, $_incorrectCount개의 문제를 틀렸어요',
+                ),
+              ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: _choices.map((answer) => Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: ElevatedButton(
-                    child: Text(answer),
-                    onPressed: () => _selectAnswer(answer),
+                    onPressed: _mainPage,
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black, backgroundColor: Colors.grey[300],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    ),
+                    child: const Text('메인으로 나가기'),
                   ),
                 ),
-              )).toList(),
-            ),
-          ],
-        ),
+              ),
+              Expanded(
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: ElevatedButton(
+                    onPressed: _resetChallenge,
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black, backgroundColor: Colors.grey[300],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    ),
+                    child: const Text('다시 하기'),
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
+    );
+  }
+
+  Widget _challengeScreen() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 8),
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height * 0.7,
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                '이 원소의 이름은 무엇인가요?',
+                style: TextStyle(fontSize: 24),
+              ),
+              Text(
+                _currentItem['symbol'],
+                style: const TextStyle(
+                  fontSize: 80,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: _choices.map((answer) => Expanded(
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.1,
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: ElevatedButton(
+                onPressed: () => _selectAnswer(answer),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black, backgroundColor: Colors.grey[300],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                ),
+                child: Text(answer),
+              ),
+            ),
+          )).toList(),
+        ),
+      ],
     );
   }
 }
