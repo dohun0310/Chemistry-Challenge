@@ -1,4 +1,4 @@
-const List<Map<String, dynamic>> elements = [
+const List<Map<String, String>> elementalsymbol = [
   {'symbol': 'H', 'name': '수소'},
   {'symbol': 'He', 'name': '헬륨'},
   {'symbol': 'Li', 'name': '리튬'},
