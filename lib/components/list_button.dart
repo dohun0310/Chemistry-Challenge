@@ -1,5 +1,46 @@
 import 'package:flutter/material.dart';
 
+class ChallengeInfo extends StatelessWidget {
+  final String label;
+  final String value;
+  final Color backgroundColor;
+
+  const ChallengeInfo({
+    super.key, 
+    required this.label,
+    required this.value,
+    required this.backgroundColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        children: [
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 12,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class ListButton extends StatelessWidget {
   final String title;
   final String difficulty;
@@ -8,7 +49,15 @@ class ListButton extends StatelessWidget {
   final MaterialColor questionnumColor;
   final Widget destinationPage;
   
-  const ListButton({super.key, required this.title, required this.difficulty, required this.difficultyColor, required this.questionnum, required this.questionnumColor, required this.destinationPage});
+  const ListButton({
+    super.key, 
+    required this.title, 
+    required this.difficulty, 
+    required this.difficultyColor, 
+    required this.questionnum, 
+    required this.questionnumColor, 
+    required this.destinationPage
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,55 +93,17 @@ class ListButton extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: difficultyColor,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Column(
-                      children: [
-                        const Text(
-                          "난이도",
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          difficulty,
-                          style: const TextStyle(
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
+                  ChallengeInfo(
+                    label: "난이도",
+                    value: difficulty,
+                    backgroundColor: difficultyColor,
                   ),
                   const SizedBox(width: 12),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: questionnumColor,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Column(
-                      children: [
-                        const Text(
-                          "문제 수",
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          questionnum.toString(),
-                          style: const TextStyle(
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                  ChallengeInfo(
+                    label: "문제 수",
+                    value: questionnum.toString(),
+                    backgroundColor: questionnumColor,
+                  ),
                 ],
               ),
             ],
