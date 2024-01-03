@@ -22,6 +22,8 @@ class HomeContent extends StatelessWidget {
   }
 }
 
+
+
 class MobileLayout extends StatelessWidget {
   const MobileLayout({super.key});
 
@@ -140,12 +142,110 @@ class TabletLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverGrid(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              delegate: SliverChildListDelegate(
+                [
+                  const ListButton(
+                    title: '원소 기호 챌린지',
+                    difficulty: '쉬움',
+                    difficultyColor: Colors.green,
+                    questionnum: 20,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '원소명 챌린지',
+                    difficulty: '쉬움',
+                    difficultyColor: Colors.green,
+                    questionnum: 20,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElementalName(),
+                  ),
+                  const ListButton(
+                    title: '원자 번호 챌린지',
+                    difficulty: '보통',
+                    difficultyColor: Colors.green,
+                    questionnum: 20,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElementalNumber(),
+                  ),
+                  const ListButton(
+                    title: '원소 챌린지',
+                    difficulty: '어려움',
+                    difficultyColor: Colors.green,
+                    questionnum: 60,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElemental(),
+                  ),
+                  const ListButton(
+                    title: '음이온식 챌린지',
+                    difficulty: '쉬움',
+                    difficultyColor: Colors.green,
+                    questionnum: 50,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '음이온식 이름 챌린지',
+                    difficulty: '보통',
+                    difficultyColor: Colors.green,
+                    questionnum: 50,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '양이온식 챌린지',
+                    difficulty: '쉬움',
+                    difficultyColor: Colors.green,
+                    questionnum: 50,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '양이온식 이름 챌린지',
+                    difficulty: '보통',
+                    difficultyColor: Colors.green,
+                    questionnum: 50,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '이온식 챌린지',
+                    difficulty: '보통',
+                    difficultyColor: Colors.green,
+                    questionnum: 50,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '이온 이름 챌린지',
+                    difficulty: '보통',
+                    difficultyColor: Colors.green,
+                    questionnum: 50,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                  const ListButton(
+                    title: '분자식 챌린지',
+                    difficulty: '보통',
+                    difficultyColor: Colors.green,
+                    questionnum: 50,
+                    questionnumColor: Colors.green,
+                    destinationPage: ChallengeElementalSymbol(),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
