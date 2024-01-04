@@ -11,7 +11,7 @@ const List<Map<String, String>> elementalsymbol = [
   {'symbol': 'Ne', 'name': '네온'},
   {'symbol': 'Na', 'name': '나트륨'},
   {'symbol': 'Mg', 'name': '마그네슘'},
-  {'symbol': 'Al', 'name': '알류미늄'},
+  {'symbol': 'Al', 'name': '알루미늄'},
   {'symbol': 'Si', 'name': '규소'},
   {'symbol': 'P', 'name': '인'},
   {'symbol': 'S', 'name': '황'},
