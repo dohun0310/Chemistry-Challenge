@@ -29,11 +29,14 @@ class ChallengeElementalSymbolState extends State<ChallengeElementalSymbolPage> 
   final List<String> _usedItems = [];
   int _correctCount = 0;
   int _incorrectCount = 0;
+  String _selectedAnswer = '';
+  String _highlightedAnswer = '';
 
   late Map<String, dynamic> _currentItem;
   late List<String> _choices;
   late String _correctAnswer;
   late bool _isChallengeCompleted = false;
+  late bool _isWaiting = false;
   static int resetThreshold = 10;
 
   @override
@@ -66,18 +69,34 @@ class ChallengeElementalSymbolState extends State<ChallengeElementalSymbolPage> 
   }
 
   void _selectAnswer(String answer) {
+    if (_isWaiting) return;
+
     final bool isCorrect = answer == _correctAnswer;
+    setState(() {
+      _selectedAnswer = answer;
+      _highlightedAnswer = isCorrect ? answer : _correctAnswer;
+      _isWaiting = true;
+    });
+
     if (isCorrect) {
       _correctCount++;
     } else {
       _incorrectCount++;
     }
 
-    if (_usedItems.length == elementalsymbol.length) {
-      _showFinalScore();
-    } else {
-      _nextChallenge();
-    }
+    Future.delayed(const Duration(seconds: 1), () {
+      if (_usedItems.length == elementalsymbol.length) {
+        _showFinalScore();
+      } else {
+        _nextChallenge();
+      }
+
+      setState(() {
+        _selectedAnswer = '';
+        _highlightedAnswer = '';
+        _isWaiting = false;
+      });
+    });
   }
 
   void _showFinalScore() {
@@ -107,6 +126,34 @@ class ChallengeElementalSymbolState extends State<ChallengeElementalSymbolPage> 
         title: const Text('원소 기호 챌린지'),
       ),
       body: _isChallengeCompleted ? _finalScoreScreen() : _challengeScreen(),
+    );
+  }
+
+  Widget _buildAnswerButton(String answer) {
+    Color bgColor;
+    if (answer == _highlightedAnswer) {
+      bgColor = answer == _correctAnswer ? Colors.green : Colors.red;
+    } else if (answer == _selectedAnswer) {
+      bgColor = Colors.red;
+    } else {
+      bgColor = Colors.grey[300]!;
+    }
+
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.1,
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: ElevatedButton(
+        onPressed: () => _selectAnswer(answer),
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.black, 
+          backgroundColor: bgColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        ),
+        child: Text(answer),
+      ),
     );
   }
 
@@ -211,26 +258,11 @@ class ChallengeElementalSymbolState extends State<ChallengeElementalSymbolPage> 
           ),
         ),
         const SizedBox(height: 20),
-        Expanded(
-          child: ListView.builder(
-            itemCount: _choices.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                height: MediaQuery.of(context).size.height * 0.1,
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: ElevatedButton(
-                  onPressed: () => _selectAnswer(_choices[index]),
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.grey[300],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                  ),
-                  child: Text(_choices[index]),
-                ),
-              );
-            },
-          ),
+        Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: _choices.map((answer) => Expanded(
+          child: _buildAnswerButton(answer),
+        )).toList(),
         ),
       ],
     );
