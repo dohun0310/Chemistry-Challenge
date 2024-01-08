@@ -1,4 +1,4 @@
-package com.example.elemental_challenge
+package com.d3h1.chemistry_challenge
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,6 @@
 {
-    "name": "elemental_challenge",
-    "short_name": "elemental_challenge",
+    "name": "화학 챌린지",
+    "short_name": "화학 챌린지",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

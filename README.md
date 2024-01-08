@@ -1,4 +1,4 @@
-# elemental_challenge
+# chemistry_challenge
 
 A new Flutter project.
 

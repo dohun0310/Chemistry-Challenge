@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:elemental_challenge/components/list_button.dart';
-import 'package:elemental_challenge/pages/elemental_symbol/main.dart';
-import 'package:elemental_challenge/pages/elemental_name/main.dart';
-import 'package:elemental_challenge/pages/elemental_number/main.dart';
-import 'package:elemental_challenge/pages/elemental/main.dart';
+import 'package:chemistry_challenge/components/list_button.dart';
+import 'package:chemistry_challenge/pages/elemental_symbol/main.dart';
+import 'package:chemistry_challenge/pages/elemental_name/main.dart';
+import 'package:chemistry_challenge/pages/elemental_number/main.dart';
+import 'package:chemistry_challenge/pages/elemental/main.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});

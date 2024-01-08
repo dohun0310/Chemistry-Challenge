@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:elemental_challenge/components/challenge_page.dart';
-import 'package:elemental_challenge/data/elemental.dart';
+import 'package:chemistry_challenge/components/challenge_page.dart';
+import 'package:chemistry_challenge/data/elemental.dart';
 
 class ChallengeElemental extends StatelessWidget {
   const ChallengeElemental({super.key});

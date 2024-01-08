@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "elemental_challenge" "\0"
+            VALUE "FileDescription", "화학 챌린지" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "elemental_challenge" "\0"
+            VALUE "InternalName", "화학 챌린지" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "elemental_challenge.exe" "\0"
-            VALUE "ProductName", "elemental_challenge" "\0"
+            VALUE "OriginalFilename", "chemistry_challenge.exe" "\0"
+            VALUE "ProductName", "화학 챌린지" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
