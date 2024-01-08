@@ -8,7 +8,7 @@
 PRODUCT_NAME = 화학 챌린지
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.chemistryChallenge
+PRODUCT_BUNDLE_IDENTIFIER = com.d3h1.chemistryChallenge
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 d3h1. All rights reserved.
