@@ -4,7 +4,6 @@ import 'package:chemistry_challenge/components/list_button.dart';
 import 'package:chemistry_challenge/pages/elemental_symbol/main.dart';
 import 'package:chemistry_challenge/pages/elemental_name/main.dart';
 import 'package:chemistry_challenge/pages/elemental_number/main.dart';
-import 'package:chemistry_challenge/pages/elemental/main.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -47,14 +46,6 @@ List<Widget> _buildListButtons() {
       questionnum: 20,
       questionnumColor: Colors.green,
       destinationPage: ChallengeElementalNumber(),
-    ),
-    const ListButton(
-      title: '원소 챌린지',
-      difficulty: '어려움',
-      difficultyColor: Colors.green,
-      questionnum: 60,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeElemental(),
     ),
     const ListButton(
       title: '음이온식 챌린지',
