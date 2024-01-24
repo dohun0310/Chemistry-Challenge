@@ -8,6 +8,7 @@ import 'package:chemistry_challenge/pages/anion_formula/main.dart';
 import 'package:chemistry_challenge/pages/anion_name/main.dart';
 import 'package:chemistry_challenge/pages/cation_formula/main.dart';
 import 'package:chemistry_challenge/pages/cation_name/main.dart';
+import 'package:chemistry_challenge/pages/ion_formula/main.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -55,7 +56,7 @@ List<Widget> _buildListButtons() {
       title: '음이온 챌린지',
       difficulty: '쉬움',
       difficultyColor: Colors.green,
-      questionnum: 12,
+      questionnum: 13,
       questionnumColor: Colors.green,
       destinationPage: ChallengeAnionFormula(),
     ),
@@ -63,7 +64,7 @@ List<Widget> _buildListButtons() {
       title: '음이온명 챌린지',
       difficulty: '보통',
       difficultyColor: Colors.green,
-      questionnum: 12,
+      questionnum: 13,
       questionnumColor: Colors.green,
       destinationPage: ChallengeAnionName(),
     ),
@@ -71,7 +72,7 @@ List<Widget> _buildListButtons() {
       title: '양이온 챌린지',
       difficulty: '쉬움',
       difficultyColor: Colors.green,
-      questionnum: 12,
+      questionnum: 13,
       questionnumColor: Colors.green,
       destinationPage: ChallengeCationFormula(),
     ),
@@ -79,7 +80,7 @@ List<Widget> _buildListButtons() {
       title: '양이온명 챌린지',
       difficulty: '보통',
       difficultyColor: Colors.green,
-      questionnum: 12,
+      questionnum: 13,
       questionnumColor: Colors.green,
       destinationPage: ChallengeCationName(),
     ),
@@ -87,15 +88,15 @@ List<Widget> _buildListButtons() {
       title: '이온 챌린지',
       difficulty: '보통',
       difficultyColor: Colors.green,
-      questionnum: 50,
+      questionnum: 26,
       questionnumColor: Colors.green,
-      destinationPage: ChallengeElementalSymbol(),
+      destinationPage: ChallengeIonFormula(),
     ),
     const ListButton(
       title: '이온명 챌린지',
       difficulty: '보통',
       difficultyColor: Colors.green,
-      questionnum: 50,
+      questionnum: 26,
       questionnumColor: Colors.green,
       destinationPage: ChallengeElementalSymbol(),
     ),
