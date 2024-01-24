@@ -15,7 +15,7 @@ class ChallengeChemicalFormula extends StatelessWidget {
       ),
       home: const ChallengePage(
         title: '화학식 챌린지',
-        description: '이 화학식에 해당하는 화합물는 무엇인가요?',
+        description: '이 화학식에 해당하는 화합물은 무엇인가요?',
         challengeData: chemicalformula,
         questionItem: 'formula',
         answerItem: 'compound',
