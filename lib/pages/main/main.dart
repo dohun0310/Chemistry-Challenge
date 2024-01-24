@@ -10,6 +10,7 @@ import 'package:chemistry_challenge/pages/cation_formula/main.dart';
 import 'package:chemistry_challenge/pages/cation_name/main.dart';
 import 'package:chemistry_challenge/pages/ion_formula/main.dart';
 import 'package:chemistry_challenge/pages/ion_name/main.dart';
+import 'package:chemistry_challenge/pages/chemical_formula/main.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -102,7 +103,15 @@ List<Widget> _buildListButtons() {
       destinationPage: ChallengeIonName(),
     ),
     const ListButton(
-      title: '분자식 챌린지',
+      title: '화학식 챌린지',
+      difficulty: '보통',
+      difficultyColor: Colors.green,
+      questionnum: 40,
+      questionnumColor: Colors.green,
+      destinationPage: ChallengeChemicalFormula(),
+    ),
+    const ListButton(
+      title: '화합물 챌린지',
       difficulty: '보통',
       difficultyColor: Colors.green,
       questionnum: 50,
