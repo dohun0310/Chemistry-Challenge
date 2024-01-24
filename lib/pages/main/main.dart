@@ -5,6 +5,7 @@ import 'package:chemistry_challenge/pages/elemental_symbol/main.dart';
 import 'package:chemistry_challenge/pages/elemental_name/main.dart';
 import 'package:chemistry_challenge/pages/elemental_number/main.dart';
 import 'package:chemistry_challenge/pages/anion_formula/main.dart';
+import 'package:chemistry_challenge/pages/anion_name/main.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -62,7 +63,7 @@ List<Widget> _buildListButtons() {
       difficultyColor: Colors.green,
       questionnum: 12,
       questionnumColor: Colors.green,
-      destinationPage: ChallengeElementalSymbol(),
+      destinationPage: ChallengeAnionName(),
     ),
     const ListButton(
       title: '양이온 챌린지',

@@ -1,0 +1,15 @@
+const List<Map<String, String>> anionname = [
+  {'name': '염화이온', 'formula': 'Cl⁻'},
+  {'name': '황산이온', 'formula': 'SO₄²⁻'},
+  {'name': '질산이온', 'formula': 'NO³'},
+  {'name': '붕산이온', 'formula': 'BO₃³⁻'},
+  {'name': '황화이온', 'formula': 'S²⁻'},
+  {'name': '탄산이온', 'formula': 'CO₃²⁻'},
+  {'name': '산화이온', 'formula': 'O²⁻'},
+  {'name': '아세트산이온', 'formula': 'CH₃COO⁻'},
+  {'name': '수산화이온', 'formula': 'OH⁻'},
+  {'name': '아이오딘화이온', 'formula': 'I⁻'},
+  {'name': '과망가니즈산이온', 'formula': 'MnO₄⁻'},
+  {'name': '중크로뮴산이온', 'formula': 'Cr₂O₇²⁻'},
+  {'name': '인산이온', 'formula': 'PO₄³⁻'},
+];
