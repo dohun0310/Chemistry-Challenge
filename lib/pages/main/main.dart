@@ -4,6 +4,7 @@ import 'package:chemistry_challenge/components/list_button.dart';
 import 'package:chemistry_challenge/pages/elemental_symbol/main.dart';
 import 'package:chemistry_challenge/pages/elemental_name/main.dart';
 import 'package:chemistry_challenge/pages/elemental_number/main.dart';
+import 'package:chemistry_challenge/pages/anion_formula/main.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -48,31 +49,39 @@ List<Widget> _buildListButtons() {
       destinationPage: ChallengeElementalNumber(),
     ),
     const ListButton(
-      title: '음이온식 챌린지',
+      title: '음이온 챌린지',
       difficulty: '쉬움',
       difficultyColor: Colors.green,
-      questionnum: 50,
+      questionnum: 12,
       questionnumColor: Colors.green,
-      destinationPage: ChallengeElementalSymbol(),
+      destinationPage: ChallengeAnionFormula(),
     ),
     const ListButton(
-      title: '음이온식 이름 챌린지',
+      title: '음이온명 챌린지',
       difficulty: '보통',
       difficultyColor: Colors.green,
-      questionnum: 50,
+      questionnum: 12,
       questionnumColor: Colors.green,
       destinationPage: ChallengeElementalSymbol(),
     ),
     const ListButton(
-      title: '양이온식 챌린지',
+      title: '양이온 챌린지',
       difficulty: '쉬움',
       difficultyColor: Colors.green,
-      questionnum: 50,
+      questionnum: 12,
       questionnumColor: Colors.green,
       destinationPage: ChallengeElementalSymbol(),
     ),
     const ListButton(
-      title: '양이온식 이름 챌린지',
+      title: '양이온명 챌린지',
+      difficulty: '보통',
+      difficultyColor: Colors.green,
+      questionnum: 12,
+      questionnumColor: Colors.green,
+      destinationPage: ChallengeElementalSymbol(),
+    ),
+    const ListButton(
+      title: '이온 챌린지',
       difficulty: '보통',
       difficultyColor: Colors.green,
       questionnum: 50,
@@ -80,15 +89,7 @@ List<Widget> _buildListButtons() {
       destinationPage: ChallengeElementalSymbol(),
     ),
     const ListButton(
-      title: '이온식 챌린지',
-      difficulty: '보통',
-      difficultyColor: Colors.green,
-      questionnum: 50,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeElementalSymbol(),
-    ),
-    const ListButton(
-      title: '이온 이름 챌린지',
+      title: '이온명 챌린지',
       difficulty: '보통',
       difficultyColor: Colors.green,
       questionnum: 50,
