@@ -1,7 +1,7 @@
 const List<Map<String, String>> anionname = [
   {'name': '염화이온', 'formula': 'Cl⁻'},
   {'name': '황산이온', 'formula': 'SO₄²⁻'},
-  {'name': '질산이온', 'formula': 'NO³'},
+  {'name': '질산이온', 'formula': 'NO³⁻'},
   {'name': '붕산이온', 'formula': 'BO₃³⁻'},
   {'name': '황화이온', 'formula': 'S²⁻'},
   {'name': '탄산이온', 'formula': 'CO₃²⁻'},
