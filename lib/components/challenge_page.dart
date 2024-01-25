@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+import 'package:chemistry_challenge/components/appbar.dart';
+
 class ChallengePage extends StatefulWidget {
   final String title;
   final String description;
@@ -111,9 +113,7 @@ class ChallengePageState extends State<ChallengePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: buildAppBar(context, widget.title),
       body: _isChallengeCompleted ? _finalScoreScreen() : _challengeScreen(),
     );
   }

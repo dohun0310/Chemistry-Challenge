@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:chemistry_challenge/components/appbar.dart';
 import 'package:chemistry_challenge/components/list_button.dart';
+
 import 'package:chemistry_challenge/pages/elemental_symbol/main.dart';
 import 'package:chemistry_challenge/pages/elemental_name/main.dart';
 import 'package:chemistry_challenge/pages/elemental_number/main.dart';
@@ -115,7 +117,7 @@ List<Widget> _buildListButtons() {
       title: '화합물 챌린지',
       difficulty: '보통',
       difficultyColor: Colors.green,
-      questionnum: 50,
+      questionnum: 40,
       questionnumColor: Colors.green,
       destinationPage: ChallengeChemicalCompound(),
     ),
@@ -152,9 +154,7 @@ class TabletLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('메인'),
-      ),
+      appBar: buildAppBar(context, '메인'),
       body: Center(
         child: CustomScrollView(
           slivers: <Widget>[
