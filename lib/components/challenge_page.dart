@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+import 'package:chemistry_challenge/themes/main.dart';
+
 import 'package:chemistry_challenge/components/appbar.dart';
 
 class ChallengePage extends StatefulWidget {
@@ -17,96 +19,96 @@ class ChallengePage extends StatefulWidget {
 }
 
 class ChallengePageState extends State<ChallengePage> {
-  final List<String> _usedItems = [];
-  int _correctCount = 0;
-  int _incorrectCount = 0;
-  String _selectedAnswer = '';
-  String _highlightedAnswer = '';
+  final List<String> usedItems = [];
+  int correctCount = 0;
+  int incorrectCount = 0;
+  String selectedAnswer = '';
+  String highlightedAnswer = '';
 
-  late Map<String, dynamic> _currentItem;
-  late List<String> _choices;
-  late String _correctAnswer;
-  late bool _isChallengeCompleted = false;
-  late bool _isWaiting = false;
+  late Map<String, dynamic> currentItem;
+  late List<String> choices;
+  late String correctAnswer;
+  late bool isChallengeCompleted = false;
+  late bool isWaiting = false;
   static int resetThreshold = 10;
 
   @override
   void initState() {
     super.initState();
-    _nextChallenge();
+    nextChallenge();
   }
 
-  void _nextChallenge() {
-    if (_usedItems.length >= widget.challengeData.length) {
-      _showFinalScore();
+  void nextChallenge() {
+    if (usedItems.length >= widget.challengeData.length) {
+      showFinalScore();
       return;
     }
   
-    final availableItems = widget.challengeData.where((item) => !_usedItems.contains(item[widget.questionItem])).toList();
+    final availableItems = widget.challengeData.where((item) => !usedItems.contains(item[widget.questionItem])).toList();
     final random = Random();
 
-    _currentItem = availableItems[random.nextInt(availableItems.length)];
-    _usedItems.add(_currentItem[widget.questionItem]);
-    _correctAnswer = _currentItem[widget.answerItem];
+    currentItem = availableItems[random.nextInt(availableItems.length)];
+    usedItems.add(currentItem[widget.questionItem]);
+    correctAnswer = currentItem[widget.answerItem];
 
     final wrongAnswers = List<String>.from(widget.challengeData.map((e) => e[widget.answerItem]))
-      ..remove(_correctAnswer);
+      ..remove(correctAnswer);
     wrongAnswers.shuffle();
 
-    _choices = wrongAnswers.take(3).toList()..add(_correctAnswer);
-    _choices.shuffle();
+    choices = wrongAnswers.take(3).toList()..add(correctAnswer);
+    choices.shuffle();
 
     setState(() {});
   }
 
-  void _selectAnswer(String answer) {
-    if (_isWaiting) return;
+  void selectAnswer(String answer) {
+    if (isWaiting) return;
 
-    final bool isCorrect = answer == _correctAnswer;
+    final bool isCorrect = answer == correctAnswer;
     setState(() {
-      _selectedAnswer = answer;
-      _highlightedAnswer = isCorrect ? answer : _correctAnswer;
-      _isWaiting = true;
+      selectedAnswer = answer;
+      highlightedAnswer = isCorrect ? answer : correctAnswer;
+      isWaiting = true;
     });
 
     if (isCorrect) {
-      _correctCount++;
+      correctCount++;
     } else {
-      _incorrectCount++;
+      incorrectCount++;
     }
 
     Future.delayed(const Duration(seconds: 1), () {
-      if (_usedItems.length == widget.challengeData.length) {
-        _showFinalScore();
+      if (usedItems.length == widget.challengeData.length) {
+        showFinalScore();
       } else {
-        _nextChallenge();
+        nextChallenge();
       }
 
       setState(() {
-        _selectedAnswer = '';
-        _highlightedAnswer = '';
-        _isWaiting = false;
+        selectedAnswer = '';
+        highlightedAnswer = '';
+        isWaiting = false;
       });
     });
   }
 
-  void _showFinalScore() {
+  void showFinalScore() {
     setState(() {
-      _isChallengeCompleted = true;
+      isChallengeCompleted = true;
     });
   }
 
-  void _mainPage() {
+  void mainPage() {
     Navigator.of(context, rootNavigator: true).pop();
   }
 
-  void _resetChallenge() {
+  void resetChallenge() {
     setState(() {
-      _isChallengeCompleted = false;
-      _usedItems.clear();
-      _correctCount = 0;
-      _incorrectCount = 0;
-      _nextChallenge();
+      isChallengeCompleted = false;
+      usedItems.clear();
+      correctCount = 0;
+      incorrectCount = 0;
+      nextChallenge();
     });
   }
 
@@ -114,28 +116,27 @@ class ChallengePageState extends State<ChallengePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context, widget.title),
-      body: _isChallengeCompleted ? _finalScoreScreen() : _challengeScreen(),
+      body: isChallengeCompleted ? finalScoreScreen() : challengeScreen(),
     );
   }
 
-  Widget _buildAnswerButton(String answer) {
-    Color bgColor;
-    if (answer == _highlightedAnswer) {
-      bgColor = answer == _correctAnswer ? Colors.green : Colors.red;
-    } else if (answer == _selectedAnswer) {
-      bgColor = Colors.red;
+  Widget buildAnswerButton(String answer) {
+    Color? backgroundColor;
+    if (answer == highlightedAnswer) {
+      backgroundColor = answer == correctAnswer ?  Colors.green : Colors.red;
+    } else if (answer == selectedAnswer) {
+      backgroundColor = Colors.red;
     } else {
-      bgColor = Colors.grey[300]!;
+      backgroundColor = Colors.grey[300];
     }
 
     return Container(
       height: MediaQuery.of(context).size.height * 0.1,
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: ElevatedButton(
-        onPressed: () => _selectAnswer(answer),
+        onPressed: () => selectAnswer(answer),
         style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.black, 
-          backgroundColor: bgColor,
+          backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
           ),
@@ -146,7 +147,7 @@ class ChallengePageState extends State<ChallengePage> {
     );
   }
 
-  Widget _finalScoreScreen() {
+  Widget finalScoreScreen() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -167,7 +168,7 @@ class ChallengePageState extends State<ChallengePage> {
                   style: TextStyle(fontSize: 24),
                 ),
                 Text(
-                  '$_correctCount개의 문제를 맞추고, $_incorrectCount개의 문제를 틀렸어요',
+                  '$correctCount개의 문제를 맞추고, $incorrectCount개의 문제를 틀렸어요',
                 ),
               ],
             ),
@@ -181,9 +182,10 @@ class ChallengePageState extends State<ChallengePage> {
                   height: MediaQuery.of(context).size.height * 0.1,
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: ElevatedButton(
-                    onPressed: _mainPage,
+                    onPressed: mainPage,
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black, backgroundColor: Colors.grey[300],
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.grey[300],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24),
                       ),
@@ -198,9 +200,10 @@ class ChallengePageState extends State<ChallengePage> {
                   height: MediaQuery.of(context).size.height * 0.1,
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: ElevatedButton(
-                    onPressed: _resetChallenge,
+                    onPressed: resetChallenge,
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black, backgroundColor: Colors.grey[300],
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.grey[300],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24),
                       ),
@@ -217,7 +220,7 @@ class ChallengePageState extends State<ChallengePage> {
     );
   }
 
-  Widget _challengeScreen() {
+  Widget challengeScreen() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -237,7 +240,7 @@ class ChallengePageState extends State<ChallengePage> {
                 style: const TextStyle(fontSize: 24),
               ),
               Text(
-                _currentItem[widget.questionItem],
+                currentItem[widget.questionItem],
                 style: const TextStyle(
                   fontSize: 80,
                   fontWeight: FontWeight.bold,
@@ -249,8 +252,8 @@ class ChallengePageState extends State<ChallengePage> {
         const SizedBox(height: 20),
         Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: _choices.map((answer) => Expanded(
-          child: _buildAnswerButton(answer),
+        children: choices.map((answer) => Expanded(
+          child: buildAnswerButton(answer),
         )).toList(),
         ),
       ],

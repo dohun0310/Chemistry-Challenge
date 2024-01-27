@@ -31,7 +31,7 @@ class HomeContent extends StatelessWidget {
   }
 }
 
-List<Widget> _buildListButtons() {
+List<Widget> buildListButtons() {
   return [
     const ListButton(
       title: '원소 기호 챌린지',
@@ -138,7 +138,7 @@ class MobileLayout extends StatelessWidget {
           slivers: <Widget>[
             SliverList(
               delegate: SliverChildListDelegate(
-                _buildListButtons(),
+                buildListButtons(),
               ),
             ),
           ],
@@ -163,7 +163,7 @@ class TabletLayout extends StatelessWidget {
                 crossAxisCount: 2,
               ),
               delegate: SliverChildListDelegate(
-                _buildListButtons(),
+                buildListButtons(),
               ),
             ),
           ],
