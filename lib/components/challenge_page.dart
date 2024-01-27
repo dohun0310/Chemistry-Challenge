@@ -123,11 +123,11 @@ class ChallengePageState extends State<ChallengePage> {
   Widget buildAnswerButton(String answer) {
     Color? backgroundColor;
     if (answer == highlightedAnswer) {
-      backgroundColor = answer == correctAnswer ?  Colors.green : Colors.red;
+      backgroundColor = answer == correctAnswer ? Theme.of(context).extension<ThemeColors>()?.green : Theme.of(context).extension<ThemeColors>()?.red;
     } else if (answer == selectedAnswer) {
-      backgroundColor = Colors.red;
+      backgroundColor = Theme.of(context).extension<ThemeColors>()?.red;
     } else {
-      backgroundColor = Colors.grey[300];
+      backgroundColor = Theme.of(context).extension<ThemeColors>()?.grey;
     }
 
     return Container(
@@ -142,7 +142,10 @@ class ChallengePageState extends State<ChallengePage> {
           ),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         ),
-        child: Text(answer),
+        child: Text(
+          answer,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
       ),
     );
   }
@@ -157,18 +160,21 @@ class ChallengePageState extends State<ChallengePage> {
             width: double.infinity,
             height: MediaQuery.of(context).size.height * 0.7,
             decoration: BoxDecoration(
-              color: Colors.grey,
+              color: Theme.of(context).extension<ThemeColors>()?.grey,
               borderRadius: BorderRadius.circular(24),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   '챌린지 완료!',
-                  style: TextStyle(fontSize: 24),
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Text(
                   '$correctCount개의 문제를 맞추고, $incorrectCount개의 문제를 틀렸어요',
+                  style: Theme.of(context).textTheme.bodyLarge
                 ),
               ],
             ),
@@ -184,14 +190,16 @@ class ChallengePageState extends State<ChallengePage> {
                   child: ElevatedButton(
                     onPressed: mainPage,
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.grey[300],
+                      backgroundColor: Theme.of(context).extension<ThemeColors>()?.grey,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24),
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     ),
-                    child: const Text('메인으로 나가기'),
+                    child: Text(
+                      '메인으로 나가기',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                   ),
                 ),
               ),
@@ -202,14 +210,16 @@ class ChallengePageState extends State<ChallengePage> {
                   child: ElevatedButton(
                     onPressed: resetChallenge,
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.grey[300],
+                      backgroundColor: Theme.of(context).extension<ThemeColors>()?.grey,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24),
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     ),
-                    child: const Text('다시 하기'),
+                    child: Text(
+                      '다시 하기',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                   ),
                 ),
               ),
@@ -229,7 +239,7 @@ class ChallengePageState extends State<ChallengePage> {
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 0.7,
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: Theme.of(context).extension<ThemeColors>()?.grey,
             borderRadius: BorderRadius.circular(24),
           ),
           child: Column(
@@ -237,14 +247,13 @@ class ChallengePageState extends State<ChallengePage> {
             children: [
               Text(
                 widget.description,
-                style: const TextStyle(fontSize: 24),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                )
               ),
               Text(
                 currentItem[widget.questionItem],
-                style: const TextStyle(
-                  fontSize: 80,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.titleMedium
               ),
             ],
           ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:chemistry_challenge/themes/main.dart';
+
 import 'package:chemistry_challenge/pages/main/main.dart';
 
 void main() {
@@ -13,10 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '화학 챌린지',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       home: const HomeContent(),
     );
   }

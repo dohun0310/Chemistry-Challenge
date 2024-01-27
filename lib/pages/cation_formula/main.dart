@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:chemistry_challenge/themes/main.dart';
+
 import 'package:chemistry_challenge/components/challenge_page.dart';
 import 'package:chemistry_challenge/data/cation_formula.dart';
 
@@ -10,9 +12,9 @@ class ChallengeCationFormula extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '양이온 챌린지',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      
+      theme: lightTheme,
+      darkTheme: darkTheme,
       home: const ChallengePage(
         title: '양이온 챌린지',
         description: '이 양이온에 해당하는 이온명는 무엇인가요?',

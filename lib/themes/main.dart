@@ -5,7 +5,7 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
   const ThemeColors({
     required this.background,
     required this.onBackground,
-    required this.outline,
+    required this.grey,
     required this.red,
     required this.green,
     required this.blue,
@@ -15,7 +15,7 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
 
   final Color? background;
   final Color? onBackground;
-  final Color? outline;
+  final Color? grey;
   final Color? red;
   final Color? green;
   final Color? blue;
@@ -23,11 +23,11 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
   final Color? yellow;
 
   @override
-  ThemeColors copyWith({Color? background, Color? onBackground, Color? outline, Color? red, Color? green, Color? blue, Color? purple, Color? yellow}) {
+  ThemeColors copyWith({Color? background, Color? onBackground, Color? grey, Color? red, Color? green, Color? blue, Color? purple, Color? yellow}) {
     return ThemeColors(
       background: background ?? this.background,
       onBackground: onBackground ?? this.onBackground,
-      outline: outline ?? this.outline,
+      grey: grey ?? this.grey,
       red: red ?? this.red,
       green: green ?? this.green,
       blue: blue ?? this.blue,
@@ -44,7 +44,7 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
     return ThemeColors(
       background: Color.lerp(background, other.background, t),
       onBackground: Color.lerp(onBackground, other.onBackground, t),
-      outline: Color.lerp(outline, other.outline, t),
+      grey: Color.lerp(grey, other.grey, t),
       red: Color.lerp(red, other.red, t),
       green: Color.lerp(green, other.green, t),
       blue: Color.lerp(blue, other.blue, t),
@@ -54,27 +54,17 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
   }
 
   @override
-  String toString() => 'ThemeColors(background: $background, onBackground: $onBackground, outline: $outline, red: $red, green: $green, blue: $blue, purple: $purple, yellow: $yellow)';
+  String toString() => 'ThemeColors(background: $background, onBackground: $onBackground, grey: $grey, red: $red, green: $green, blue: $blue, purple: $purple, yellow: $yellow)';
 }
 
 final lightTheme = ThemeData.light().copyWith(
   textTheme: textStyleData,
 
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      primary: const Color(0xFF151515),
-      onPrimary: const Color(0xFFFFFFFF),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-    ),
-  ),
-
   extensions: <ThemeExtension<dynamic>>[
     const ThemeColors(
       background: Color(0xFFFFFFFF),
       onBackground: Color(0xFF151515),
-      outline: Color(0xFFB7B7B7),
+      grey: Color(0xFFB7B7B7),
       red: Color(0xFFFC4F4F),
       green: Color(0xFF4AD871),
       blue: Color(0xFF3C89FF),
@@ -99,7 +89,7 @@ final darkTheme = ThemeData.dark().copyWith(
     const ThemeColors(
       background: Color(0xFF151515),
       onBackground: Color(0xFFFFFFFF),
-      outline: Color(0xFF303030),
+      grey: Color(0xFF303030),
       red: Color(0xFFFC4F4F),
       green: Color(0xFF4AD871),
       blue: Color(0xFF3C89FF),

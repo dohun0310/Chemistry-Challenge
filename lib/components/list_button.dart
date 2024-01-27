@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:chemistry_challenge/themes/main.dart';
+
 class ChallengeInfo extends StatelessWidget {
   final String label;
   final String value;
@@ -44,9 +46,9 @@ class ChallengeInfo extends StatelessWidget {
 class ListButton extends StatelessWidget {
   final String title;
   final String difficulty;
-  final MaterialColor difficultyColor;
+  final Color difficultyColor;
   final int questionnum;
-  final MaterialColor questionnumColor;
+  final Color questionnumColor;
   final Widget destinationPage;
   
   const ListButton({
@@ -71,11 +73,12 @@ class ListButton extends StatelessWidget {
           );
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
-            side: const BorderSide(color: Colors.grey, width: 1),
+            side: BorderSide(
+              color: Theme.of(context).extension<ThemeColors>()?.grey ?? Colors.grey,
+              width: 1
+            ),
           ),
           elevation: 0,
         ),
@@ -86,9 +89,7 @@ class ListButton extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
+                  style: Theme.of(context).textTheme.bodyLarge!
                 ),
               ),
               Row(

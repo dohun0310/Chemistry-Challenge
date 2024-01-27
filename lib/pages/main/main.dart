@@ -130,9 +130,7 @@ class MobileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('메인'),
-      ),
+      appBar: buildAppBar(context, '메인'),
       body: Center(
         child: CustomScrollView(
           slivers: <Widget>[
