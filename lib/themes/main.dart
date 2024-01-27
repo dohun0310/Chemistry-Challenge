@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 @immutable
 class ThemeColors extends ThemeExtension<ThemeColors> {
   const ThemeColors({
-    required this.white,
-    required this.black,
-    required this.grey,
+    required this.background,
+    required this.onBackground,
+    required this.outline,
     required this.red,
     required this.green,
     required this.blue,
@@ -13,9 +13,9 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
     required this.yellow,
   });
 
-  final Color? white;
-  final Color? black;
-  final Color? grey;
+  final Color? background;
+  final Color? onBackground;
+  final Color? outline;
   final Color? red;
   final Color? green;
   final Color? blue;
@@ -23,11 +23,11 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
   final Color? yellow;
 
   @override
-  ThemeColors copyWith({Color? white, Color? black, Color? grey, Color? red, Color? green, Color? blue, Color? purple, Color? yellow}) {
+  ThemeColors copyWith({Color? background, Color? onBackground, Color? outline, Color? red, Color? green, Color? blue, Color? purple, Color? yellow}) {
     return ThemeColors(
-      white: white ?? this.white,
-      black: black ?? this.black,
-      grey: grey ?? this.grey,
+      background: background ?? this.background,
+      onBackground: onBackground ?? this.onBackground,
+      outline: outline ?? this.outline,
       red: red ?? this.red,
       green: green ?? this.green,
       blue: blue ?? this.blue,
@@ -42,9 +42,9 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
       return this;
     }
     return ThemeColors(
-      white: Color.lerp(white, other.white, t),
-      black: Color.lerp(black, other.black, t),
-      grey: Color.lerp(grey, other.grey, t),
+      background: Color.lerp(background, other.background, t),
+      onBackground: Color.lerp(onBackground, other.onBackground, t),
+      outline: Color.lerp(outline, other.outline, t),
       red: Color.lerp(red, other.red, t),
       green: Color.lerp(green, other.green, t),
       blue: Color.lerp(blue, other.blue, t),
@@ -54,15 +54,27 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
   }
 
   @override
-  String toString() => 'ThemeColors(white: $white, black: $black, grey: $grey, red: $red, green: $green, blue: $blue, purple: $purple, yellow: $yellow)';
+  String toString() => 'ThemeColors(background: $background, onBackground: $onBackground, outline: $outline, red: $red, green: $green, blue: $blue, purple: $purple, yellow: $yellow)';
 }
 
 final lightTheme = ThemeData.light().copyWith(
+  textTheme: textStyleData,
+
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      primary: const Color(0xFF151515),
+      onPrimary: const Color(0xFFFFFFFF),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+  ),
+
   extensions: <ThemeExtension<dynamic>>[
     const ThemeColors(
-      white: Color(0xFFFFFFFF),
-      black: Color(0xFF151515),
-      grey: Color(0xFFB7B7B7),
+      background: Color(0xFFFFFFFF),
+      onBackground: Color(0xFF151515),
+      outline: Color(0xFFB7B7B7),
       red: Color(0xFFFC4F4F),
       green: Color(0xFF4AD871),
       blue: Color(0xFF3C89FF),
@@ -70,14 +82,24 @@ final lightTheme = ThemeData.light().copyWith(
       yellow: Color(0xFFFFBF44),
     ),
   ],
+
+  colorScheme: const ColorScheme.light(
+    primary: Color(0xFF151515),
+    onPrimary: Color(0xFFFFFFFF),
+    error: Color(0xFFFC4F4F),
+    background: Color(0xFFFFFFFF), 
+    onBackground: Color(0xFF151515), 
+  )
 );
 
 final darkTheme = ThemeData.dark().copyWith(
+  textTheme: textStyleData,
+
   extensions: <ThemeExtension<dynamic>>[
     const ThemeColors(
-      white: Color(0xFFFFFFFF),
-      black: Color(0xFF151515),
-      grey: Color(0xFF303030),
+      background: Color(0xFF151515),
+      onBackground: Color(0xFFFFFFFF),
+      outline: Color(0xFF303030),
       red: Color(0xFFFC4F4F),
       green: Color(0xFF4AD871),
       blue: Color(0xFF3C89FF),
@@ -85,4 +107,91 @@ final darkTheme = ThemeData.dark().copyWith(
       yellow: Color(0xFFFFBF44),
     ),
   ],
+
+  colorScheme: const ColorScheme.dark(
+    primary: Color(0xFFFFFFFF),
+    onPrimary: Color(0xFF151515),
+    error: Color(0xFFFC4F4F),
+    background: Color(0xFF151515), 
+    onBackground: Color(0xFFFFFFFF), 
+  )
 );
+
+const textStyleData =  TextTheme(
+  /// This is LargeTitle, which can be used with bold font weight.
+  displayLarge: TextStyle(
+    fontSize: 34,
+    fontWeight: ThemeFontWeights.regular,
+  ),
+
+  /// This is Title1, which can be used with bold font weight.
+  titleLarge: TextStyle(
+    fontSize: 28,
+    fontWeight: ThemeFontWeights.regular,
+  ),
+
+  /// This is Title2, which can be used with bold font weight.
+  titleMedium: TextStyle(
+    fontSize: 22,
+    fontWeight: ThemeFontWeights.regular,
+  ),
+
+  /// This is Title3, which can be used with a bold font weight.
+  titleSmall: TextStyle(
+    fontSize: 20,
+    fontWeight: ThemeFontWeights.regular,
+  ),
+
+  /// This is Headline, which can be used with italic font style.
+  headlineLarge: TextStyle(
+    fontSize: 17,
+    fontWeight: ThemeFontWeights.bold,
+  ),
+
+  /// This is Body, which can be used with bold font weight and italic font style.
+  bodyLarge: TextStyle(
+    fontSize: 17,
+    fontWeight: ThemeFontWeights.regular,
+  ),
+
+  /// This is Caption1, which can be used with bold font weight and italic font style.
+  labelLarge: TextStyle(
+    fontSize: 12,
+    fontWeight: ThemeFontWeights.regular,
+  ),
+
+  /// This is Caption2, which can be used with bold font weight and italic font style.
+  labelSmall: TextStyle(
+    fontSize: 11,
+    fontWeight: ThemeFontWeights.regular,
+  ),
+);
+
+class ThemeFontWeights {
+  /// Thin, the least thick.
+  static const FontWeight ultralight = FontWeight.w100;
+
+  /// Extra-light.
+  static const FontWeight thin = FontWeight.w200;
+
+  /// Light.
+  static const FontWeight light = FontWeight.w300;
+
+  /// The default font weight.
+  static const FontWeight regular = FontWeight.w400;
+
+  /// Medium.
+  static const FontWeight medium = FontWeight.w500;
+
+  /// Semi-bold.
+  static const FontWeight semibold = FontWeight.w600;
+
+  /// A commonly used font weight that is heavier than normal.
+  static const FontWeight bold = FontWeight.w700;
+
+  /// Extra-bold.
+  static const FontWeight heavy = FontWeight.w800;
+
+  /// Black, the most thick.
+  static const FontWeight black = FontWeight.w900;
+}
