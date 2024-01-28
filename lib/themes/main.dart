@@ -111,49 +111,66 @@ const textStyleData =  TextTheme(
   /// This is LargeTitle, which can be used with bold font weight.
   displayLarge: TextStyle(
     fontSize: 34,
+    height: 41 / 34,
     fontWeight: ThemeFontWeights.regular,
+    letterSpacing: -0.4,
   ),
 
   /// This is Title1, which can be used with bold font weight.
   titleLarge: TextStyle(
     fontSize: 28,
+    height: 34 / 28,
     fontWeight: ThemeFontWeights.regular,
+    letterSpacing: -0.4,
   ),
 
   /// This is Title2, which can be used with bold font weight.
   titleMedium: TextStyle(
     fontSize: 22,
+    height: 28 / 22,
     fontWeight: ThemeFontWeights.regular,
+    letterSpacing: -0.4,
   ),
 
   /// This is Title3, which can be used with a bold font weight.
   titleSmall: TextStyle(
     fontSize: 20,
+    height: 25 / 20,
     fontWeight: ThemeFontWeights.regular,
+    letterSpacing: -0.4,
   ),
 
   /// This is Headline, which can be used with italic font style.
   headlineLarge: TextStyle(
     fontSize: 17,
+    height: 22 / 17,
     fontWeight: ThemeFontWeights.bold,
+    letterSpacing: -0.4,
   ),
 
   /// This is Body, which can be used with bold font weight and italic font style.
   bodyLarge: TextStyle(
     fontSize: 17,
+    height: 22 / 17,
     fontWeight: ThemeFontWeights.regular,
+    letterSpacing: -0.4,
   ),
 
   /// This is Caption1, which can be used with bold font weight and italic font style.
   labelLarge: TextStyle(
     fontSize: 12,
+    height: 16 / 12,
     fontWeight: ThemeFontWeights.regular,
+    letterSpacing: -0.4,
   ),
 
   /// This is Caption2, which can be used with bold font weight and italic font style.
   labelSmall: TextStyle(
     fontSize: 11,
+    height: 13 / 11,
     fontWeight: ThemeFontWeights.regular,
+    letterSpacing: -0.4,
+
   ),
 );
 
