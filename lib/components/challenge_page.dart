@@ -7,13 +7,20 @@ import 'package:chemistry_challenge/themes/texts.dart';
 import 'package:chemistry_challenge/components/appbar.dart';
 
 class ChallengePage extends StatefulWidget {
+  const ChallengePage({
+    super.key, 
+    required this.title, 
+    required this.description, 
+    required this.challengeData, 
+    required this.questionItem, 
+    required this.answerItem
+  });
+  
   final String title;
   final String description;
   final List<Map<String, String>> challengeData;
   final String questionItem;
   final String answerItem;
-
-  const ChallengePage({super.key, required this.title, required this.description, required this.challengeData, required this.questionItem, required this.answerItem});
 
   @override
   ChallengePageState createState() => ChallengePageState();
@@ -121,6 +128,54 @@ class ChallengePageState extends State<ChallengePage> {
     );
   }
 
+  Widget buildScreen(title, question) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 40),
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height * 0.7,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            style: ThemeTexts.title1Emphasized,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            question,
+            style: ThemeTexts.title1Regular,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildScreenButton(String title, Color? color, VoidCallback onPressed) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.1,
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        ),
+        child: Text(
+          title,
+          style: ThemeTexts.bodyRegular,
+        ),
+      ),
+    );
+  }
+
   Widget buildAnswerButton(String answer) {
     Color? backgroundColor;
     if (answer == highlightedAnswer) {
@@ -131,23 +186,10 @@ class ChallengePageState extends State<ChallengePage> {
       backgroundColor = Theme.of(context).extension<ThemeColors>()?.grey;
     }
 
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: ElevatedButton(
-        onPressed: () => selectAnswer(answer),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        ),
-        child: Text(
-          answer,
-          style: ThemeTexts.bodyRegular,
-        ),
-      ),
+    return buildScreenButton(
+      answer,
+      backgroundColor,
+      () => selectAnswer(answer)
     );
   }
 
@@ -156,70 +198,26 @@ class ChallengePageState extends State<ChallengePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 8),
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.7,
-            decoration: BoxDecoration(
-              color: Theme.of(context).extension<ThemeColors>()?.grey,
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  '챌린지 완료!',
-                  style: ThemeTexts.title1Emphasized,
-                ),
-                Text(
-                  '$correctCount개의 문제를 맞추고, $incorrectCount개의 문제를 틀렸어요',
-                  style: ThemeTexts.bodyRegular,
-                ),
-              ],
-            ),
+          buildScreen(
+            '챌린지 완료',
+            '$correctCount개의 문제를 맞추고, $incorrectCount개의 문제를 틀렸어요'
           ),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Expanded(
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: ElevatedButton(
-                    onPressed: mainPage,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).extension<ThemeColors>()?.grey,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    ),
-                    child: const Text(
-                      '메인으로 나가기',
-                      style: ThemeTexts.bodyRegular,
-                    ),
-                  ),
+                child: buildScreenButton(
+                  '메인으로 나가기',
+                  Theme.of(context).extension<ThemeColors>()!.grey,
+                  mainPage
                 ),
               ),
               Expanded(
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: ElevatedButton(
-                    onPressed: resetChallenge,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).extension<ThemeColors>()?.grey,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    ),
-                    child: const Text(
-                      '다시 하기',
-                      style: ThemeTexts.bodyRegular,
-                    ),
-                  ),
+                child: buildScreenButton(
+                  '다시 시작하기',
+                  Theme.of(context).extension<ThemeColors>()!.grey,
+                  resetChallenge
                 ),
               ),
             ],
@@ -233,36 +231,16 @@ class ChallengePageState extends State<ChallengePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 8),
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height * 0.7,
-          decoration: BoxDecoration(
-            color: Theme.of(context).extension<ThemeColors>()?.grey,
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                widget.description,
-                style: ThemeTexts.title2Emphasized,
-              ),
-              Text(
-                currentItem[widget.questionItem],
-                style: ThemeTexts.title2Regular,
-              ),
-            ],
-          ),
-        ),
+        buildScreen(widget.title, currentItem[widget.questionItem]),
         const SizedBox(height: 20),
         Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: choices.map((answer) => Expanded(
-          child: buildAnswerButton(answer),
-        )).toList(),
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: choices.map((answer) => Expanded(
+            child: buildAnswerButton(answer),
+          )).toList(),
         ),
       ],
     );
   }
 }
+
