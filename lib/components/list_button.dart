@@ -4,16 +4,16 @@ import 'package:chemistry_challenge/themes/main.dart';
 import 'package:chemistry_challenge/themes/texts.dart';
 
 class ChallengeInfo extends StatelessWidget {
-  final String label;
-  final String value;
-  final Color backgroundColor;
-
   const ChallengeInfo({
     super.key, 
     required this.label,
     required this.value,
     required this.backgroundColor,
   });
+  
+  final String label;
+  final String value;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +40,6 @@ class ChallengeInfo extends StatelessWidget {
 }
 
 class ListButton extends StatelessWidget {
-  final String title;
-  final String difficulty;
-  final Color difficultyColor;
-  final int questionnum;
-  final Color questionnumColor;
-  final Widget destinationPage;
-  
   const ListButton({
     super.key, 
     required this.title, 
@@ -56,6 +49,13 @@ class ListButton extends StatelessWidget {
     required this.questionnumColor, 
     required this.destinationPage
   });
+
+  final String title;
+  final String difficulty;
+  final Color difficultyColor;
+  final int questionnum;
+  final Color questionnumColor;
+  final Widget destinationPage;
 
   @override
   Widget build(BuildContext context) {
