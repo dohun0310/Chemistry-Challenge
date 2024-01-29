@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:chemistry_challenge/themes/main.dart';
+import 'package:chemistry_challenge/themes/texts.dart';
 
 import 'package:chemistry_challenge/components/appbar.dart';
 
@@ -144,7 +145,7 @@ class ChallengePageState extends State<ChallengePage> {
         ),
         child: Text(
           answer,
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: ThemeTexts.bodyRegular,
         ),
       ),
     );
@@ -166,15 +167,13 @@ class ChallengePageState extends State<ChallengePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   '챌린지 완료!',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: ThemeTexts.title1Emphasized,
                 ),
                 Text(
                   '$correctCount개의 문제를 맞추고, $incorrectCount개의 문제를 틀렸어요',
-                  style: Theme.of(context).textTheme.bodyLarge
+                  style: ThemeTexts.bodyRegular,
                 ),
               ],
             ),
@@ -196,9 +195,9 @@ class ChallengePageState extends State<ChallengePage> {
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     ),
-                    child: Text(
+                    child: const Text(
                       '메인으로 나가기',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: ThemeTexts.bodyRegular,
                     ),
                   ),
                 ),
@@ -216,9 +215,9 @@ class ChallengePageState extends State<ChallengePage> {
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     ),
-                    child: Text(
+                    child: const Text(
                       '다시 하기',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: ThemeTexts.bodyRegular,
                     ),
                   ),
                 ),
@@ -247,13 +246,11 @@ class ChallengePageState extends State<ChallengePage> {
             children: [
               Text(
                 widget.description,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                )
+                style: ThemeTexts.title2Emphasized,
               ),
               Text(
                 currentItem[widget.questionItem],
-                style: Theme.of(context).textTheme.titleMedium
+                style: ThemeTexts.title2Regular,
               ),
             ],
           ),

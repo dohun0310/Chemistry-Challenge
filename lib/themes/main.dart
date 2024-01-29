@@ -58,8 +58,6 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
 }
 
 final lightTheme = ThemeData.light().copyWith(
-  textTheme: textStyleData,
-
   extensions: <ThemeExtension<dynamic>>[
     const ThemeColors(
       background: Color(0xFFFFFFFF),
@@ -83,8 +81,6 @@ final lightTheme = ThemeData.light().copyWith(
 );
 
 final darkTheme = ThemeData.dark().copyWith(
-  textTheme: textStyleData,
-
   extensions: <ThemeExtension<dynamic>>[
     const ThemeColors(
       background: Color(0xFF151515),
@@ -106,99 +102,3 @@ final darkTheme = ThemeData.dark().copyWith(
     onBackground: Color(0xFFFFFFFF), 
   )
 );
-
-const textStyleData =  TextTheme(
-  /// This is LargeTitle, which can be used with bold font weight.
-  displayLarge: TextStyle(
-    fontSize: 34,
-    height: 41 / 34,
-    fontWeight: ThemeFontWeights.regular,
-    letterSpacing: -0.4,
-  ),
-
-  /// This is Title1, which can be used with bold font weight.
-  titleLarge: TextStyle(
-    fontSize: 28,
-    height: 34 / 28,
-    fontWeight: ThemeFontWeights.regular,
-    letterSpacing: -0.4,
-  ),
-
-  /// This is Title2, which can be used with bold font weight.
-  titleMedium: TextStyle(
-    fontSize: 22,
-    height: 28 / 22,
-    fontWeight: ThemeFontWeights.regular,
-    letterSpacing: -0.4,
-  ),
-
-  /// This is Title3, which can be used with a bold font weight.
-  titleSmall: TextStyle(
-    fontSize: 20,
-    height: 25 / 20,
-    fontWeight: ThemeFontWeights.regular,
-    letterSpacing: -0.4,
-  ),
-
-  /// This is Headline, which can be used with italic font style.
-  headlineLarge: TextStyle(
-    fontSize: 17,
-    height: 22 / 17,
-    fontWeight: ThemeFontWeights.bold,
-    letterSpacing: -0.4,
-  ),
-
-  /// This is Body, which can be used with bold font weight and italic font style.
-  bodyLarge: TextStyle(
-    fontSize: 17,
-    height: 22 / 17,
-    fontWeight: ThemeFontWeights.regular,
-    letterSpacing: -0.4,
-  ),
-
-  /// This is Caption1, which can be used with bold font weight and italic font style.
-  labelLarge: TextStyle(
-    fontSize: 12,
-    height: 16 / 12,
-    fontWeight: ThemeFontWeights.regular,
-    letterSpacing: -0.4,
-  ),
-
-  /// This is Caption2, which can be used with bold font weight and italic font style.
-  labelSmall: TextStyle(
-    fontSize: 11,
-    height: 13 / 11,
-    fontWeight: ThemeFontWeights.regular,
-    letterSpacing: -0.4,
-
-  ),
-);
-
-class ThemeFontWeights {
-  /// Thin, the least thick.
-  static const FontWeight ultralight = FontWeight.w100;
-
-  /// Extra-light.
-  static const FontWeight thin = FontWeight.w200;
-
-  /// Light.
-  static const FontWeight light = FontWeight.w300;
-
-  /// The default font weight.
-  static const FontWeight regular = FontWeight.w400;
-
-  /// Medium.
-  static const FontWeight medium = FontWeight.w500;
-
-  /// Semi-bold.
-  static const FontWeight semibold = FontWeight.w600;
-
-  /// A commonly used font weight that is heavier than normal.
-  static const FontWeight bold = FontWeight.w700;
-
-  /// Extra-bold.
-  static const FontWeight heavy = FontWeight.w800;
-
-  /// Black, the most thick.
-  static const FontWeight black = FontWeight.w900;
-}

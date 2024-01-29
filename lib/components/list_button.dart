@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:chemistry_challenge/themes/main.dart';
+import 'package:chemistry_challenge/themes/texts.dart';
 
 class ChallengeInfo extends StatelessWidget {
   final String label;
@@ -26,16 +27,11 @@ class ChallengeInfo extends StatelessWidget {
         children: [
           Text(
             label,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-            ),
+            style: ThemeTexts.caption1Emphasized,
           ),
           Text(
             value,
-            style: const TextStyle(
-              fontSize: 12,
-            ),
+            style: ThemeTexts.caption1Regular,
           ),
         ],
       ),
@@ -64,32 +60,29 @@ class ListButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(8, 0, 8, 12),
-      child: ElevatedButton(
-        onPressed: () {
+      margin: const EdgeInsets.fromLTRB(12, 0, 12, 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: Theme.of(context).extension<ThemeColors>()!.grey ?? Colors.grey,
+        )
+      ),
+      child: InkWell(
+        onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => destinationPage),
           );
         },
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-            side: BorderSide(
-              color: Theme.of(context).extension<ThemeColors>()?.grey ?? Colors.grey,
-              width: 1
-            ),
-          ),
-          elevation: 0,
-        ),
-        child: Padding(
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
               Expanded(
                 child: Text(
                   title,
-                  style: Theme.of(context).textTheme.bodyLarge!
+                  style: ThemeTexts.bodyRegular,
                 ),
               ),
               Row(
