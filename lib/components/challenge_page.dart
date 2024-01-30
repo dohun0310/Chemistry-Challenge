@@ -231,7 +231,7 @@ class ChallengePageState extends State<ChallengePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        buildScreen(widget.title, currentItem[widget.questionItem]),
+        buildScreen(widget.description, currentItem[widget.questionItem]),
         const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
