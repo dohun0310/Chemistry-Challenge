@@ -12,9 +12,9 @@ class ChallengeCationFormula extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '양이온 챌린지',
-      
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       home: const ChallengePage(
         title: '양이온 챌린지',
         description: '이 양이온에 해당하는 이온명는 무엇인가요?',

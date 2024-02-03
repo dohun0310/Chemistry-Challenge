@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:chemistry_challenge/themes/main.dart';
+import 'package:chemistry_challenge/themes/texts.dart';
 
 AppBar buildAppBar(BuildContext context, String title) {
   return AppBar(
     title: Text(
       title,
-      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-        color: Theme.of(context).extension<ThemeColors>()?.onBackground,
-      ),
+      style: ThemeTexts.title2Regular,
     ),
     elevation: 0,
   );

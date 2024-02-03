@@ -12,8 +12,9 @@ class ChallengeElementalNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '원소 번호 챌린지',
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       home: const ChallengePage(
         title: '원소 번호 챌린지',
         description: '이 원소 번호에 맞는 원자는 무엇인가요?',

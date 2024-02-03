@@ -12,8 +12,9 @@ class ChallengeChemicalFormula extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '화학식 챌린지',
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       home: const ChallengePage(
         title: '화학식 챌린지',
         description: '이 화학식에 해당하는 화합물은 무엇인가요?',

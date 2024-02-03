@@ -27,11 +27,15 @@ class ChallengeInfo extends StatelessWidget {
         children: [
           Text(
             label,
-            style: ThemeTexts.caption1Emphasized,
+            style: ThemeTexts.caption1Emphasized.copyWith(
+              color: Theme.of(context).extension<AppExtension>()!.colors.text,
+            ),
           ),
           Text(
             value,
-            style: ThemeTexts.caption1Regular,
+            style: ThemeTexts.caption1Regular.copyWith(
+              color: Theme.of(context).extension<AppExtension>()!.colors.text,
+            ),
           ),
         ],
       ),
@@ -64,7 +68,7 @@ class ListButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: Theme.of(context).extension<ThemeColors>()!.grey ?? Colors.grey,
+          color: Theme.of(context).extension<AppExtension>()!.colors.outline,
         )
       ),
       child: InkWell(
@@ -82,7 +86,9 @@ class ListButton extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: ThemeTexts.bodyRegular,
+                  style: ThemeTexts.bodyRegular.copyWith(
+                    color: Theme.of(context).extension<AppExtension>()!.colors.text,
+                  ),
                 ),
               ),
               Row(

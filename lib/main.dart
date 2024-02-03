@@ -15,8 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '화학 챌린지',
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       home: const HomeContent(),
     );
   }

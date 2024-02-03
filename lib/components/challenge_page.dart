@@ -142,13 +142,17 @@ class ChallengePageState extends State<ChallengePage> {
         children: [
           Text(
             title,
-            style: ThemeTexts.title1Emphasized,
+            style: ThemeTexts.title1Emphasized.copyWith(
+              color: Theme.of(context).extension<AppExtension>()!.colors.text,
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 20),
           Text(
             question,
-            style: ThemeTexts.title1Regular,
+            style: ThemeTexts.title1Regular.copyWith(
+              color: Theme.of(context).extension<AppExtension>()!.colors.text,
+            ),
           ),
         ],
       ),
@@ -170,7 +174,9 @@ class ChallengePageState extends State<ChallengePage> {
         ),
         child: Text(
           title,
-          style: ThemeTexts.bodyRegular,
+          style: ThemeTexts.bodyRegular.copyWith(
+            color: Theme.of(context).extension<AppExtension>()!.colors.text,
+          )
         ),
       ),
     );
@@ -179,11 +185,11 @@ class ChallengePageState extends State<ChallengePage> {
   Widget buildAnswerButton(String answer) {
     Color? backgroundColor;
     if (answer == highlightedAnswer) {
-      backgroundColor = answer == correctAnswer ? Theme.of(context).extension<ThemeColors>()?.green : Theme.of(context).extension<ThemeColors>()?.red;
+      backgroundColor = answer == correctAnswer ? Theme.of(context).extension<AppExtension>()!.absolute.green90 : Theme.of(context).extension<AppExtension>()!.absolute.red90;
     } else if (answer == selectedAnswer) {
-      backgroundColor = Theme.of(context).extension<ThemeColors>()?.red;
+      backgroundColor = Theme.of(context).extension<AppExtension>()!.absolute.red90;
     } else {
-      backgroundColor = Theme.of(context).extension<ThemeColors>()?.grey;
+      backgroundColor = Theme.of(context).extension<AppExtension>()!.colors.container;
     }
 
     return buildScreenButton(
@@ -209,14 +215,14 @@ class ChallengePageState extends State<ChallengePage> {
               Expanded(
                 child: buildScreenButton(
                   '메인으로 나가기',
-                  Theme.of(context).extension<ThemeColors>()!.grey,
+                  Theme.of(context).extension<AppExtension>()!.colors.text,
                   mainPage
                 ),
               ),
               Expanded(
                 child: buildScreenButton(
                   '다시 시작하기',
-                  Theme.of(context).extension<ThemeColors>()!.grey,
+                  Theme.of(context).extension<AppExtension>()!.colors.text,
                   resetChallenge
                 ),
               ),

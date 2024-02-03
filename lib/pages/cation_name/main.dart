@@ -12,8 +12,9 @@ class ChallengeCationName extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '양이온명 챌린지',
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       home: const ChallengePage(
         title: '양이온명 챌린지',
         description: '이 이온명에 해당하는 양이온은 무엇인가요?',
