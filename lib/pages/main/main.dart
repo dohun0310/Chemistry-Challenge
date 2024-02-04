@@ -15,8 +15,8 @@ import 'package:chemistry_challenge/pages/ion_name/main.dart';
 import 'package:chemistry_challenge/pages/chemical_formula/main.dart';
 import 'package:chemistry_challenge/pages/chemical_compound/main.dart';
 
-class HomeContent extends StatelessWidget {
-  const HomeContent({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
