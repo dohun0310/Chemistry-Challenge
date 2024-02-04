@@ -126,6 +126,11 @@ class ThemeColors {
     required this.splash,
     required this.highlight,
     required this.outline,
+    required this.red,
+    required this.green,
+    required this.blue,
+    required this.purple,
+    required this.yellow,
   });
 
   final Color background;
@@ -138,6 +143,11 @@ class ThemeColors {
   final Color splash;
   final Color highlight;
   final Color outline;
+  final Color red;
+  final Color green;
+  final Color blue;
+  final Color purple;
+  final Color yellow;
 }
 
 @immutable
@@ -324,6 +334,11 @@ class AppExtension extends ThemeExtension<AppExtension> {
     splash: brightness == Brightness.light ? grey60 : grey40,
     highlight: brightness == Brightness.light ? grey60 : grey40,
     outline: brightness == Brightness.light ? grey30 : grey20,
+    red: brightness == Brightness.light ? red90 : red10,
+    green: brightness == Brightness.light ? green90 : green10,
+    blue: brightness == Brightness.light ? blue90 : blue10,
+    purple: brightness == Brightness.light ? purple90 : purple10,
+    yellow: brightness == Brightness.light ? yellow90 : yellow10,
   );
 
   @override
