@@ -168,8 +168,8 @@ class ChallengePageState extends State<ChallengePage> {
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(24),
-          splashColor: Theme.of(context).extension<AppExtension>()!.colors.splash,
-          highlightColor: Theme.of(context).extension<AppExtension>()!.colors.highlight,
+          splashColor: Theme.of(context).extension<AppExtension>()!.colors.splash.withOpacity(0.1),
+          highlightColor: Theme.of(context).extension<AppExtension>()!.colors.splash,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             alignment: Alignment.center,
