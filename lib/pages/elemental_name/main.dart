@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:chemistry_challenge/themes/main.dart';
+import 'package:chemistry_challenge/theme.dart';
 
 import 'package:chemistry_challenge/components/challenge_page.dart';
 import 'package:chemistry_challenge/data/elemental_name.dart';

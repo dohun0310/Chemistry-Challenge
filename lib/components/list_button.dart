@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:chemistry_challenge/themes/main.dart';
-import 'package:chemistry_challenge/themes/texts.dart';
+import 'package:chemistry_challenge/theme.dart';
 
 class ChallengeInfo extends StatelessWidget {
   const ChallengeInfo({
