@@ -159,24 +159,28 @@ class ChallengePageState extends State<ChallengePage> {
     );
   }
 
-  Widget buildScreenButton(String title, Color? color, VoidCallback onPressed) {
+  Widget buildScreenButton(String title, Color? color, VoidCallback onTap) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.1,
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
+      child: Material(
+        color: color,
+        borderRadius: BorderRadius.circular(24),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(24),
+          splashColor: Theme.of(context).extension<AppExtension>()!.absolute.grey60,
+          highlightColor: Theme.of(context).extension<AppExtension>()!.absolute.grey60,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            alignment: Alignment.center,
+            child: Text(
+              title,
+              style: ThemeTexts.bodyRegular.copyWith(
+                color: Theme.of(context).extension<AppExtension>()!.colors.text,
+              ),
+            ),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        ),
-        child: Text(
-          title,
-          style: ThemeTexts.bodyRegular.copyWith(
-            color: Theme.of(context).extension<AppExtension>()!.colors.text,
-          )
         ),
       ),
     );
