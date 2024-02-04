@@ -152,6 +152,7 @@ class ChallengePageState extends State<ChallengePage> {
             style: ThemeTexts.title1Regular.copyWith(
               color: Theme.of(context).extension<AppExtension>()!.colors.text,
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
@@ -178,6 +179,7 @@ class ChallengePageState extends State<ChallengePage> {
               style: ThemeTexts.bodyRegular.copyWith(
                 color: textColor,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
         ),
