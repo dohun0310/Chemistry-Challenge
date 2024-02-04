@@ -11,6 +11,7 @@ AppBar buildAppBar(BuildContext context, String title) {
       ),
     ),
     elevation: 0,
+    scrolledUnderElevation: 0,
     backgroundColor: Theme.of(context).extension<AppExtension>()!.colors.background,
   );
 }
