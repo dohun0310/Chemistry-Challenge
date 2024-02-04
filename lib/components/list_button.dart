@@ -17,12 +17,16 @@ class ChallengeInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             label,
@@ -63,6 +67,7 @@ class ListButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       margin: const EdgeInsets.fromLTRB(12, 0, 12, 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
@@ -79,8 +84,10 @@ class ListButton extends StatelessWidget {
         },
         borderRadius: BorderRadius.circular(16),
         child: Container(
-          padding: const EdgeInsets.all(8.0),
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Expanded(
                 child: Text(
@@ -91,6 +98,7 @@ class ListButton extends StatelessWidget {
                 ),
               ),
               Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   ChallengeInfo(
                     label: "난이도",

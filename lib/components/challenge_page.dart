@@ -138,6 +138,7 @@ class ChallengePageState extends State<ChallengePage> {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             title,
@@ -179,7 +180,7 @@ class ChallengePageState extends State<ChallengePage> {
               style: ThemeTexts.bodyRegular.copyWith(
                 color: textColor,
               ),
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.center
             ),
           ),
         ),
@@ -213,6 +214,7 @@ class ChallengePageState extends State<ChallengePage> {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           buildScreen(
             '챌린지 완료',
@@ -248,6 +250,7 @@ class ChallengePageState extends State<ChallengePage> {
   Widget challengeScreen() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         buildScreen(widget.description, currentItem[widget.questionItem]),
         const SizedBox(height: 20),
@@ -261,4 +264,3 @@ class ChallengePageState extends State<ChallengePage> {
     );
   }
 }
-

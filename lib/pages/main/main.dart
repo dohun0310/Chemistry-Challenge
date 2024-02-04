@@ -132,14 +132,10 @@ class MobileLayout extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context, '메인'),
       body: Center(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverList(
-              delegate: SliverChildListDelegate(
-                buildListButtons(),
-              ),
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: buildListButtons(),
+          ),
         ),
       ),
     );
@@ -153,20 +149,21 @@ class TabletLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context, '메인'),
-      body: Center(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-              ),
-              delegate: SliverChildListDelegate(
-                buildListButtons(),
-              ),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            children: buildListButtons().map((button) => 
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2 - 16,
+                child: button,
+              )
+            ).toList(),
+          ),
         ),
       ),
     );
   }
 }
+
