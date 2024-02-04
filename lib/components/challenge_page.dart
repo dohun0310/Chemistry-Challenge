@@ -188,9 +188,9 @@ class ChallengePageState extends State<ChallengePage> {
   Widget buildAnswerButton(String answer) {
     Color? backgroundColor;
     if (answer == highlightedAnswer) {
-      backgroundColor = answer == correctAnswer ? Theme.of(context).extension<AppExtension>()!.absolute.green90 : Theme.of(context).extension<AppExtension>()!.absolute.red90;
+      backgroundColor = answer == correctAnswer ? Theme.of(context).extension<AppExtension>()!.colors.correct : Theme.of(context).extension<AppExtension>()!.colors.incorrect;
     } else if (answer == selectedAnswer) {
-      backgroundColor = Theme.of(context).extension<AppExtension>()!.absolute.red90;
+      backgroundColor = Theme.of(context).extension<AppExtension>()!.colors.incorrect;
     } else {
       backgroundColor = Theme.of(context).extension<AppExtension>()!.colors.container;
     }

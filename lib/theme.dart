@@ -121,6 +121,8 @@ class ThemeColors {
     required this.textSecondary,
     required this.container,
     required this.containerSecondary,
+    required this.correct,
+    required this.incorrect,
     required this.splash,
     required this.highlight,
     required this.outline,
@@ -131,6 +133,8 @@ class ThemeColors {
   final Color textSecondary;
   final Color container;
   final Color containerSecondary;
+  final Color correct;
+  final Color incorrect;
   final Color splash;
   final Color highlight;
   final Color outline;
@@ -315,6 +319,8 @@ class AppExtension extends ThemeExtension<AppExtension> {
     textSecondary: grey70,
     container: brightness == Brightness.light ? grey40 : grey20,
     containerSecondary: brightness == Brightness.light ? grey50 : grey30,
+    correct: brightness == Brightness.light ? green90 : green10,
+    incorrect: brightness == Brightness.light ? red90 : red10,
     splash: brightness == Brightness.light ? grey60 : grey40,
     highlight: brightness == Brightness.light ? grey60 : grey40,
     outline: brightness == Brightness.light ? grey30 : grey20,
