@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:chemistry_challenge/theme.dart';
+
 import 'package:chemistry_challenge/components/appbar.dart';
 import 'package:chemistry_challenge/components/list_button.dart';
 
@@ -31,95 +33,95 @@ class HomePage extends StatelessWidget {
   }
 }
 
-List<Widget> buildListButtons() {
+List<Widget> buildListButtons(BuildContext context) {
   return [
-    const ListButton(
+    ListButton(
       title: '원소 기호 챌린지',
       difficulty: '쉬움',
-      difficultyColor: Colors.green,
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.green,
       questionnum: 20,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeElementalSymbol(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.yellow,
+      destinationPage: const ChallengeElementalSymbol(),
     ),
-    const ListButton(
+    ListButton(
       title: '원소명 챌린지',
       difficulty: '쉬움',
-      difficultyColor: Colors.green,
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.green,
       questionnum: 20,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeElementalName(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.yellow,
+      destinationPage: const ChallengeElementalName(),
     ),
-    const ListButton(
+    ListButton(
       title: '원자 번호 챌린지',
       difficulty: '보통',
-      difficultyColor: Colors.green,
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.green,
       questionnum: 20,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeElementalNumber(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.yellow,
+      destinationPage: const ChallengeElementalNumber(),
     ),
-    const ListButton(
+    ListButton(
       title: '음이온 챌린지',
       difficulty: '쉬움',
-      difficultyColor: Colors.green,
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.green,
       questionnum: 13,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeAnionFormula(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.green,
+      destinationPage: const ChallengeAnionFormula(),
     ),
-    const ListButton(
+    ListButton(
       title: '음이온명 챌린지',
-      difficulty: '보통',
-      difficultyColor: Colors.green,
+      difficulty: '쉬움',
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.green,
       questionnum: 13,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeAnionName(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.green,
+      destinationPage: const ChallengeAnionName(),
     ),
-    const ListButton(
+    ListButton(
       title: '양이온 챌린지',
       difficulty: '쉬움',
-      difficultyColor: Colors.green,
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.green,
       questionnum: 13,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeCationFormula(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.green,
+      destinationPage: const ChallengeCationFormula(),
     ),
-    const ListButton(
+    ListButton(
       title: '양이온명 챌린지',
-      difficulty: '보통',
-      difficultyColor: Colors.green,
+      difficulty: '쉬움',
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.green,
       questionnum: 13,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeCationName(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.green,
+      destinationPage: const ChallengeCationName(),
     ),
-    const ListButton(
+    ListButton(
       title: '이온 챌린지',
       difficulty: '보통',
-      difficultyColor: Colors.green,
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.yellow,
       questionnum: 26,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeIonFormula(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.yellow,
+      destinationPage: const ChallengeIonFormula(),
     ),
-    const ListButton(
+    ListButton(
       title: '이온명 챌린지',
       difficulty: '보통',
-      difficultyColor: Colors.green,
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.yellow,
       questionnum: 26,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeIonName(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.yellow,
+      destinationPage: const ChallengeIonName(),
     ),
-    const ListButton(
+    ListButton(
       title: '화학식 챌린지',
-      difficulty: '보통',
-      difficultyColor: Colors.green,
+      difficulty: '어려움',
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.red,
       questionnum: 40,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeChemicalFormula(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.red,
+      destinationPage: const ChallengeChemicalFormula(),
     ),
-    const ListButton(
+    ListButton(
       title: '화합물 챌린지',
-      difficulty: '보통',
-      difficultyColor: Colors.green,
+      difficulty: '어려움',
+      difficultyColor: Theme.of(context).extension<AppExtension>()!.colors.red,
       questionnum: 40,
-      questionnumColor: Colors.green,
-      destinationPage: ChallengeChemicalCompound(),
+      questionnumColor: Theme.of(context).extension<AppExtension>()!.colors.red,
+      destinationPage: const ChallengeChemicalCompound(),
     ),
   ];
 }
@@ -134,7 +136,7 @@ class MobileLayout extends StatelessWidget {
       body: Center(
         child: SingleChildScrollView(
           child: Column(
-            children: buildListButtons(),
+            children: buildListButtons(context),
           ),
         ),
       ),
@@ -154,7 +156,7 @@ class TabletLayout extends StatelessWidget {
           child: Wrap(
             spacing: 8.0,
             runSpacing: 8.0,
-            children: buildListButtons().map((button) => 
+            children: buildListButtons(context).map((button) => 
               SizedBox(
                 width: MediaQuery.of(context).size.width / 2 - 16,
                 child: button,
