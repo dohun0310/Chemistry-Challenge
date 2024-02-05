@@ -163,7 +163,7 @@ class ChallengePageState extends State<ChallengePage> {
   Widget buildScreenButton(String title, Color? color, Color? textColor,VoidCallback onTap) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.1,
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 4),
       child: Material(
         color: color,
         borderRadius: BorderRadius.circular(24),
