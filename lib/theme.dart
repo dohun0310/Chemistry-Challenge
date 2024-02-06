@@ -131,6 +131,8 @@ class ThemeColors {
     required this.blue,
     required this.purple,
     required this.yellow,
+    required this.black,
+    required this.white,
   });
 
   final Color background;
@@ -148,6 +150,8 @@ class ThemeColors {
   final Color blue;
   final Color purple;
   final Color yellow;
+  final Color black;
+  final Color white;
 }
 
 @immutable
@@ -339,6 +343,8 @@ class AppExtension extends ThemeExtension<AppExtension> {
     blue: brightness == Brightness.light ? blue90 : blue10,
     purple: brightness == Brightness.light ? purple90 : purple10,
     yellow: brightness == Brightness.light ? yellow90 : yellow10,
+    black: brightness == Brightness.light ? grey90 : grey10,
+    white: brightness == Brightness.light ? grey10 : grey90,
   );
 
   @override
