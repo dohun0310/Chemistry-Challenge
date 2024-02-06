@@ -894,7 +894,7 @@ class AppTheme {
 
   static ThemeData get light => ThemeData.light().copyWith(
     brightness: Brightness.light,
-    scaffoldBackgroundColor: AppExtension.light().absolute.grey10,
+    scaffoldBackgroundColor: AppExtension.light().colors.background,
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: <TargetPlatform, PageTransitionsBuilder>{
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
@@ -904,9 +904,9 @@ class AppTheme {
     extensions: <ThemeExtension<dynamic>>[AppExtension.light()],
   );
 
-  static ThemeData get dark => ThemeData.light().copyWith(
+  static ThemeData get dark => ThemeData.dark().copyWith(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: AppExtension.dark().absolute.grey10,
+    scaffoldBackgroundColor: AppExtension.dark().colors.background,
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: <TargetPlatform, PageTransitionsBuilder>{
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
