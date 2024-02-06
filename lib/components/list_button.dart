@@ -31,13 +31,13 @@ class ChallengeInfo extends StatelessWidget {
           Text(
             label,
             style: ThemeTexts.caption1Emphasized.copyWith(
-              color: Theme.of(context).extension<AppExtension>()!.colors.text,
+              color: Theme.of(context).extension<AppExtension>()!.colors.black,
             ),
           ),
           Text(
             value,
             style: ThemeTexts.caption1Regular.copyWith(
-              color: Theme.of(context).extension<AppExtension>()!.colors.text,
+              color: Theme.of(context).extension<AppExtension>()!.colors.black,
             ),
           ),
         ],
