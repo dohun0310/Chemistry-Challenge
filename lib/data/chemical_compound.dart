@@ -29,7 +29,7 @@ const List<Map<String, String>> chemicalcompound = [
   {'compound': '황산 나트륨', 'formula': 'Na₂SO₄'},
   {'compound': '수산화 구리', 'formula': 'Cu(OH)₂'},
   {'compound': '아이오딘화 납', 'formula': 'PbI₂'},
-  {'compound': '질산', 'formula': 'HNO₃'},
+  {'compound': '염산', 'formula': 'HClO₄'},
   {'compound': '탄산 마그네슘', 'formula': 'MgCO₃'},
   {'compound': '수산화 철', 'formula': 'Fe(OH)₃'},
   {'compound': '아산화 망가니즈', 'formula': 'MnO₂'},
